@@ -1,9 +1,58 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Investing S&P 500 ETF prices</title>
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
+    <title>S&P 500 ETF prices</title>
+    <meta name="description" content="S&P 500 ETF prices information">
+    <script src="https://apis.google.com/js/api.js"></script>
+    <link rel="author" href="https://github.com/sappho192/InvestingSnP500">
+    <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     Coming soon...
   </body>
+  <script>
+    gapi.load('client', initClient);
+    function initClient() {
+      var API_KEY = 'AIzaSyAb8CbeJ_uH5Rjl4s4FkMg-XDMBv9BpzFs';
+      var CLIENT_ID = '316944615830-7ji09s9msul1b16lreeai0bt155pv070.apps.googleusercontent.com';
+
+      var SCOPE = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+
+      gapi.client.init({
+          'apiKey': API_KEY,
+          'clientId': CLIENT_ID,
+          'scope': SCOPE,
+          'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+          }).then(function() {
+          makeApiCall();
+      });
+    }
+    function makeApiCall() {
+      var params;
+      
+      params = {
+          spreadsheetId: '1qGg5RvILO7h0lR218lgz9rscyZeqZ4NMLYf4aYzeLA4',
+          ranges: ["main!A2:A3"],
+          majorDimension: 'ROWS',
+          includeGridData: true
+      };
+
+      var request = gapi.client.sheets.spreadsheets.values.get(params);
+      request.then(function(response) {
+          updateTable(response.result);
+      }, function(reason) {
+              console.error('error: ' + reason.result.error.message);
+      });
+    }
+    function updateTable(data) {
+      //                console.log(data);
+    var tableArr = [];
+    console.debug(data);
+    
+    // A마물의 정보 수집
+    var dataA = data.valueRanges["0"].values;
+
+    }
+  </script>
 </html>
