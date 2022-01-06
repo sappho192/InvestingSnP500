@@ -27,16 +27,20 @@
           <td id='A2'>???</td>
         </tr>
         <tr>
-          <td id='B1'>SPLG</td>
+          <td id='B1'>TQQQ</td>
           <td id='B2'>???</td>
         </tr>
         <tr>
-          <td id='C1'>SSO</td>
+          <td id='C1'>SPLG</td>
           <td id='C2'>???</td>
         </tr>
         <tr>
-          <td id='D1'>SPXL</td>
+          <td id='D1'>SSO</td>
           <td id='D2'>???</td>
+        </tr>
+        <tr>
+          <td id='E1'>SPXL</td>
+          <td id='E2'>???</td>
         </tr>
       </table>
     </div>
@@ -63,7 +67,7 @@
       
       params = {
           spreadsheetId: '1qGg5RvILO7h0lR218lgz9rscyZeqZ4NMLYf4aYzeLA4',
-          range: "main!A2:B7",
+          range: "main!A2:B6",
           includeGridData: true
       };
 
@@ -83,6 +87,14 @@
       
       // BULZ
       document.getElementById('A2').innerHTML = data['values'][0][1];
+      // TQQQ
+      document.getElementById('B2').innerHTML = data['values'][1][1];
+      // SPLG
+      document.getElementById('C2').innerHTML = data['values'][2][1];
+      // SSO
+      document.getElementById('D2').innerHTML = data['values'][3][1];
+      // SPXL
+      document.getElementById('E2').innerHTML = data['values'][4][1];
     }
   </script>
 </html>
